@@ -20,10 +20,10 @@ message VehicleRequest {
 }
 
 //	message type
-message CreditReply {
+message VehicleResponse {
   string model = 1;
   string make = 2;
-  int year = 3;
+  int32 year = 3;
   string fuel = 4;
   string transmission = 5;
 }
