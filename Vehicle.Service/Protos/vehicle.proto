@@ -1,0 +1,29 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "VehicleService";
+
+package VehicleService;
+
+//	service interface
+service GetVehicle {
+  rpc GetVehicleRequest (VehicleRequest) returns (VehicleResponse);
+  rpc GetRandomRecommendationRequest() returns (VehicleResponse);
+}
+
+//	message type
+message VehicleRequest {
+//	https://developers.google.com/protocol-buffers/docs/proto3#scalar
+//	https://developers.google.com/protocol-buffers/docs/proto3#enum
+
+  string model = 1;	//	numbers to identify your fields in the messages once they are serailized to binary
+  string make = 2;
+}
+
+//	message type
+message CreditReply {
+  string model = 1;
+  string make = 2;
+  int year = 3;
+  string fuel = 4;
+  string transmission = 5;
+}
