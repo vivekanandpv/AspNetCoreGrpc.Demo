@@ -31,6 +31,7 @@ namespace Vehicle.Service
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGrpcService<VehicleService>();
 
                 endpoints.MapGet("/", async context =>
                 {
