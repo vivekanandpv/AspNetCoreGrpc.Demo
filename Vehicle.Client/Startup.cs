@@ -1,3 +1,4 @@
+using Grpc.Net.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -7,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VehicleGrpcService;
+using static VehicleGrpcService.VehicleServiceContract;
 
 namespace Vehicle.Client
 {
@@ -16,6 +19,11 @@ namespace Vehicle.Client
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(typeof(VehicleServiceContractClient), sp =>
+            {
+                var channel = GrpcChannel.ForAddress("https://localhost:5001");
+                return new VehicleServiceContractClient(channel);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
