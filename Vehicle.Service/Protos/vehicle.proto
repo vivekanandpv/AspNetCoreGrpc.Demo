@@ -1,13 +1,16 @@
-﻿syntax = "proto3";
+﻿
 
-option csharp_namespace = "VehicleService";
+syntax = "proto3";
 
-package VehicleService;
+option csharp_namespace = "VehicleGrpcService";
+
+import "google/protobuf/empty.proto";
+package VehicleGrpcService;
 
 //	service interface
-service GetVehicle {
-  rpc GetVehicleRequest (VehicleRequest) returns (VehicleResponse);
-  rpc GetRandomRecommendationRequest() returns (VehicleResponse);
+service VehicleServiceContract {
+  rpc GetVehicle(VehicleRequest) returns (VehicleResponse);
+  rpc GetRandomRecommendation(google.protobuf.Empty) returns (VehicleResponse);
 }
 
 //	message type
@@ -20,10 +23,10 @@ message VehicleRequest {
 }
 
 //	message type
-message CreditReply {
+message VehicleResponse {
   string model = 1;
   string make = 2;
-  int year = 3;
+  int32 year = 3;
   string fuel = 4;
   string transmission = 5;
 }
