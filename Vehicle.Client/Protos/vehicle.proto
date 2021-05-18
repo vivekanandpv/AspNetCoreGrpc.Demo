@@ -1,0 +1,32 @@
+﻿
+
+syntax = "proto3";
+
+option csharp_namespace = "VehicleGrpcService";
+
+import "google/protobuf/empty.proto";
+package VehicleGrpcService;
+
+//	service interface
+service VehicleServiceContract {
+  rpc GetVehicle(VehicleRequest) returns (VehicleResponse);
+  rpc GetRandomRecommendation(google.protobuf.Empty) returns (VehicleResponse);
+}
+
+//	message type
+message VehicleRequest {
+//	https://developers.google.com/protocol-buffers/docs/proto3#scalar
+//	https://developers.google.com/protocol-buffers/docs/proto3#enum
+
+  string model = 1;	//	numbers to identify your fields in the messages once they are serailized to binary
+  string make = 2;
+}
+
+//	message type
+message VehicleResponse {
+  string model = 1;
+  string make = 2;
+  int32 year = 3;
+  string fuel = 4;
+  string transmission = 5;
+}
