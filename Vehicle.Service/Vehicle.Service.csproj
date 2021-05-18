@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+    <!--This information allows the build system to generate the C# code needed to support the 
+        basic infrastructure for gRPC server side part.-->
+    <Protobuf Include="Protos\vehicle.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>
